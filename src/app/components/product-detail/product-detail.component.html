@@ -1,0 +1,62 @@
+<div class="card m-auto" style="width: 25%;">
+    <div class="card-body text-center">
+        <h5 class="card-title "><h3 class="text-success">Product Name:</h3> {{product.name}}</h5>
+        <h5 class="card-title"><h3 class="text-success">Type:</h3> {{product.type}}</h5>
+        <h5 class="card-title"><h3 class="text-success">Description:</h3> {{product.description}}</h5>
+        <h5 class="card-title"><h3 class="text-success">Color:</h3>  {{product.color}}</h5>
+        <h5 class="card-title"><h3 class="text-success">Price:</h3> {{product.price}} &#36;</h5>
+    </div>
+</div>
+
+<div class="container mt-5 p-5 bg-light text-dark mb-5">
+    <h3 class="text-center text-success fs-2 fw-bold">Edit Product</h3>
+    <form [formGroup]="productForm" (ngSubmit)="add()">
+        <div class="mb-3">
+            <label for="exampleInputName1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp"
+                formControlName="name">
+            <ng-container *ngIf="getName.touched" id="emailHelp">
+                <p *ngIf="getName.hasError('required')" class="form-text text-danger">The name is required</p>
+            </ng-container>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputName1" class="form-label">Type</label>
+            <input type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp"
+                formControlName="type">
+            <ng-container *ngIf="getType.touched" id="emailHelp">
+                <p *ngIf="getType.hasError('required')" class="form-text text-danger">The type is required</p>
+                <p *ngIf="getType.hasError('maxLength')" class="form-text text-danger">The type must be less than 56 character long </p>
+            </ng-container>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputName1" class="form-label">Description</label>
+            <input type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp"
+                formControlName="description">
+            <ng-container *ngIf="getDescription.touched" id="emailHelp">
+                <p *ngIf="getDescription.hasError('required')" class="form-text text-danger">The description is required</p>
+                <p *ngIf="getType.hasError('maxLength')" class="form-text text-danger">The description must be less than 56 character long </p>
+                
+            </ng-container>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputName1" class="form-label">Color</label>
+            <input type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp"
+            formControlName="color">
+            <ng-container *ngIf="getColor.touched" id="emailHelp">
+                <p *ngIf="getColor.hasError('required')" class="form-text text-danger">The color is required</p>
+                <p *ngIf="getColor.hasError('maxLength')" class="form-text text-danger">The color must be less than 56 character long </p>
+                
+            </ng-container>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputName1" class="form-label">Price</label>
+            <input type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp"
+            formControlName="price">
+            <ng-container *ngIf="getPrice.touched" id="emailHelp">
+                <p *ngIf="getPrice.hasError('min')" class="form-text text-danger">The Price must be more than 0 &#36; </p>
+                
+            </ng-container>
+        </div>
+        <button type="submit" class="btn btn-success fs-4"> Update</button>
+    </form>
+</div>

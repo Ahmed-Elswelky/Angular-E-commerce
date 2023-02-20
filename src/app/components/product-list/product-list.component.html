@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+
+        <input type="text" placeholder="Search by color" style="width: 50%;height: 50px;padding: 10px 20px; margin: 10px 0;" [(ngModel)]="filterText">
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of filteredProducts| paginate: {itemsPerPage: 10, currentPage: p} ">
+                    <td>{{product.name}}</td>
+                    <td>{{product.color}}</td>
+                    <td>{{product.type}}</td>
+                    <td>{{product.price}} &#36;</td>
+                    <td>
+                        <a class="btn btn-primary mx-2" [routerLink]="['/productDetail',product.id]">Edit product</a>
+                        <button class="btn btn-danger mx-2" (click)="removeProduct(product.id)">Delete product</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>    
+        <pagination-controls (pageChange)="p=$event" class="fs-4 mt-4"></pagination-controls>
+    </div>
+
+</div>
