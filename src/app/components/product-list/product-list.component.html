@@ -1,9 +1,8 @@
 <div class="container">
     <div class="row">
-
         <input type="text" placeholder="Search by color" style="width: 50%;height: 50px;padding: 10px 20px; margin: 10px 0;" [(ngModel)]="filterText">
-        <table class="table" id="example">
-            <thead>
+        <table class="table table-bordered border-black" id="example">
+            <thead class="text-center">
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Color</th>
@@ -13,13 +12,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of filteredProducts| paginate: {itemsPerPage: 10, currentPage: p} ">
+                <tr *ngFor="let product of filteredProducts| paginate: {itemsPerPage: 10, currentPage: p} " class="text-center">
                     <td>{{product.name}}</td>
                     <td>{{product.color}}</td>
                     <td>{{product.type}}</td>
                     <td>{{product.price}} &#36;</td>
-                    <td>
-                        <a class="btn btn-primary mx-2" [routerLink]="['/productDetail',product.id]">Edit product</a>
+                    <td class="d-flex flex-row justify-content-center">
+                        <a class="btn btn-primary mx-2 " [routerLink]="['/productDetail',product.id]">Edit product</a>
                         <button class="btn btn-danger mx-2" (click)="removeProduct(product.id)">Delete product</button>
                     </td>
                 </tr>

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { ProductService } from 'src/services/product.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
   }
   removeProduct(productId:number){
     this.productService.deleteProduct(productId).subscribe((response)=>{
-      this.products = this.products.filter((product:any)=> product.id != productId)
+      this.filteredProducts = this.filteredProducts.filter((product:any)=> product.id != productId)
     })
   }
 
